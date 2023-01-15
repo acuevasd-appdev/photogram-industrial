@@ -18,9 +18,9 @@
   </div>
 </div>
 
-<h2> Own photos </h2>
+<h2> Liked photos </h2>
 
 
-<% @user.own_photos.each do |this_photo| %>
+<% @user.liked_photos.each do |this_photo| %>
   <%=render "photos/photo", photo: this_photo %>
 <% end %>

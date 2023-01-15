@@ -22,6 +22,7 @@ class PhotosController < ApplicationController
   # POST /photos or /photos.json
   def create
     @photo = Photo.new(photo_params)
+    @photo.owner = current_user
 
     respond_to do |format|
       if @photo.save
@@ -55,6 +56,10 @@ class PhotosController < ApplicationController
       format.html { redirect_to photos_url, notice: "Photo was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def liked
+    @user = User.find_by!(username: params.fetch(:username))
   end
 
   private
