@@ -10,6 +10,10 @@ task sample_data: :environment do
   end
 
   usernames = Array.new{Faker::Name.first_name}
+  10.times do
+    this_name = Faker::Name.first_name
+    usernames << this_name
+  end
   usernames << "alice"
   usernames << "bob"
   usernames.each do |username|
