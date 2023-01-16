@@ -17,11 +17,16 @@ task sample_data: :environment do
   usernames << "alice"
   usernames << "bob"
   usernames.each do |username|
+    last_name = Faker::Name.last_name   
     User.create(
       email: "#{username}@example.com",
       username: username.downcase,
       password: "password",
-      private: [true,false].sample
+      private: [true,false].sample,
+      name: "#{username.capitalize} #{last_name.capitalize}",
+      bio: Faker::TvShows::GameOfThrones.quote,
+      website: "https://www.google.com", 
+      avatar: "https://robohash.org/#{username}"
     )
   end
   p "#{User.count} users have been created."
