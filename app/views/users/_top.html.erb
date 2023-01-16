@@ -15,15 +15,15 @@
       <% end%>
 
       <p> <%=@user.followers.count %> Followers </p>
-    
+      <# %=render "users/modal" %>
       <p> <%=@user.leaders.count %> Following </p>
       <p> <%=@user.received_follow_requests.pending.count %> Pending </p>
 
-      <% if current_user@user.accepted_sent_follow_requests %>
+      <#% if current_user@user.accepted_sent_follow_requests %>
         <div class="d-grid gap-2">
           <button type="button" class="btn btn-outline-secondary">Follow</button>
         </div>
-      <% end%>
+      <#% end%>
       <h3> <%=@user.name %> </h3>
 
       <p> <%=@user.bio %> </p>
