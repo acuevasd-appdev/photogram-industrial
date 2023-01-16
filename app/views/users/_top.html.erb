@@ -3,7 +3,7 @@
 
     <div class="d-flex">
     <div class="flex-shrink-0">
-      <img class="mr-3 rounded-circle" width="128" src="https://robohash.org/alice" alt="...">
+      <img class="mr-3 rounded-circle" width="128" src=<%=@user.avatar %> alt="...">
     </div>
     <div class="flex-grow-1 ms-3">
       <h1>
@@ -19,14 +19,17 @@
       <p> <%=@user.leaders.count %> Following </p>
       <p> <%=@user.received_follow_requests.pending.count %> Pending </p>
 
-      <div class="d-grid gap-2">
-        <button type="button" class="btn btn-outline-secondary">Follow</button>
-      </div>
-      <p> Name </p>
+      <% if current_user@user.accepted_sent_follow_requests %>
+        <div class="d-grid gap-2">
+          <button type="button" class="btn btn-outline-secondary">Follow</button>
+        </div>
+      <% end%>
+      <h3> <%=@user.name %> </h3>
 
-      <p> Bio </p>
-      <p> Avatar </p>
-      <p> Website </p>
+      <p> <%=@user.bio %> </p>
+
+      <%=link_to @user.website , @user.website, class: "nav-link active" %>
+
     </div>
   </div>
 
