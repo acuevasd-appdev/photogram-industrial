@@ -1,9 +1,5 @@
-<div class="row">
-  <div class="col-md-6 offset-md-3">
-    <h1><%= @user.username %>'s discover</h1>
-    <p> posts liked by people you follow</p>
-  </div>
-</div>
+<h1><%= @user.username %>'s discover</h1>
+<p> posts liked by people you follow</p>
 
 <% @user.discover.each do |this_photo| %>
   <%=render "photos/photo", photo: this_photo %>

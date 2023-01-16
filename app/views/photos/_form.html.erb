@@ -11,17 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
+
+  
+  <div class="field mb-3">
     <%= form.label :image %>
-    <%= form.text_field :image %>
+    <%= form.text_field :image , class:"form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field mb-3">
     <%= form.label :caption %>
-    <%= form.text_area :caption %>
+    <%= form.text_area :caption, class:"form-control" %>
   </div>
 
-  <div class="actions">
+  <div class="actions d-grid gap-2">
     <%= form.submit %>
   </div>
 <% end %>

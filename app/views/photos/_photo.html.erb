@@ -1,6 +1,4 @@
- <div class ="row mb-3">
-    <div class= "col-md-6 offset-md-3">
-      <div class="card">
+<div class="card">
         <div class="card-body">
           <h5 class="card-title">
               <%=link_to photo.owner.username , user_path(photo.owner.username), class: "link-secondary" %>
@@ -10,6 +8,8 @@
         
         <div class="card-body">  
           <p class="card-text"><%= photo.caption %></p>
+          
+          <%=link_to "Like photo" , photo.likes.build, class: "link-secondary" %>
         </div>
 
 
@@ -19,13 +19,32 @@
             <li class="list-group-item">
               <div class="d-flex">
                 <div class="flex-shrink-0">
-                  <img src="..." alt="...">
+                  <img class="mr-3 rounded-circle" width="36" src=<%=comment.author.avatar %> alt="...">
                 </div>
                 <div class="flex-grow-1 ms-3">
                   <h5 class="mt-0">
                     <%=link_to comment.author.username , user_path(comment.author.username), class: "link-secondary" %>
                   </h5>
                   <p> <%= comment.body %> </p>
+
+                  <div class="row">
+                    <div class="col">
+                      <div class="d-grid">
+                        <%= link_to edit_comment_path(comment), class: "btn btn-outline-secondary" do %>
+                          <i class="fa-regular fa-pen-to-square"></i>
+                        <% end %>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="d-grid">
+                        <%= link_to comment, method: :delete, class: "btn btn-outline-secondary" do %>
+                          <i class="fa-regular fa-trash-can"></i>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+
+                  
                 </div>
               </div> 
             </li>
@@ -34,10 +53,6 @@
 
         <div class="card-body">
           <%= render "comments/form", comment: photo.comments.build %>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
         </div>
 
-      </div>
-    </div>
-  </div>
+</div>
