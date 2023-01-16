@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   resources :photos
  
   get ":username/liked" => "photos#liked", as: :liked_photos
-  # get ":username/feed" => ""
-  # get ":username/discover" => ""
+  get ":username/feed" => "photos#feed", as: :feed_photos
+  get ":username/discover" => "photos#discover", as: :discover_photos
   # get add post
   get "/:username" => "users#show", as: :user
 

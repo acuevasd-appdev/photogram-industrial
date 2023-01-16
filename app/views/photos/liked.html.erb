@@ -1,25 +1,6 @@
-<div class="row">
-  <div class="col-md-6 offset-md-3">
-    <h1>
-      <%= @user.username %>
-    </h1>
-
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <%=link_to "Posts" , user_path(@user.username), class: "nav-link active" %>
-      </li>
-      <li class="nav-item">
-        <%=link_to "Likes" , liked_photos_path(@user.username), class: "nav-link active" %>
-      </li>
-    </ul>
-
-
-
-  </div>
-</div>
+<%=render "users/top" %>
 
 <h2> Liked photos </h2>
-
 
 <% @user.liked_photos.each do |this_photo| %>
   <%=render "photos/photo", photo: this_photo %>
