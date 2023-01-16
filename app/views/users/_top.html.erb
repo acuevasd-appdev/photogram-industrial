@@ -20,8 +20,8 @@
       <div class="col"> <%=@user.received_follow_requests.pending.count %> Pending </div>
     </div>
    
-    <div class="d-grid gap-2">
-      Follow Button
+    <div class="d-grid gap-2 mt-4 mb-4">
+      <button type="button" class="btn btn-outline-secondary">Follow</button>
     </div>
       
      
@@ -40,12 +40,13 @@
 
 </div>
 
-
 <ul class="nav nav-tabs nav-fill">
   <li class="nav-item">
-    <%=link_to "Posts" , user_path(@user.username), class: "nav-link active" %>
+    <%=link_to "Post", user_path(@user.username), class: "nav-link active" %> 
+    <span class="badge rounded-pill bg-secondary"> <%=@user.photos_count%> </span>
   </li>
   <li class="nav-item">
     <%=link_to "Likes" , liked_photos_path(@user.username), class: "nav-link active" %>
+    <span class="badge rounded-pill bg-secondary"> <%=@user.likes_count%> </span>
     </li>
 </ul>
