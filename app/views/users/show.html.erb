@@ -1,5 +1,6 @@
 <%=render "users/top" %>
 
+
 <% @user.own_photos.each do |this_photo| %>
   <%=render "photos/photo", photo: this_photo %>
 <% end %>

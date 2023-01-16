@@ -1,0 +1,12 @@
+<h5>
+  <%= @user.username %> 
+  <span class="badge rounded-pill bg-secondary"> <%= foo.count %> </span>
+</h5>
+
+<% foo.each do |user2| %>
+  <li class="list-group-item">
+    <ul>
+      <%=link_to user2.username , user_path(user2.username), class: "link-primary" %>
+    </ul>
+  </li>
+<% end %>

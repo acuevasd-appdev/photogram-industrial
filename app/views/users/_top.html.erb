@@ -15,7 +15,9 @@
     </div>
     
     <div class="d-flex justify-content-between">
-      <div class="col"> <%=@user.followers.count %> Followers </div>
+      <div class="col">
+       <%=@user.followers.count %> Followers 
+       </div>
       <div class="col"> <%=@user.leaders.count %> Following </div>
       <div class="col"> <%=@user.received_follow_requests.pending.count %> Pending </div>
     </div>
