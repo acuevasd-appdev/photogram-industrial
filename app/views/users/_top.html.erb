@@ -16,10 +16,22 @@
     
     <div class="d-flex justify-content-between">
       <div class="col">
-       <%=@user.followers.count %> Followers 
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#FollowersModal">
+          <%=@user.followers.count %> Followers
+        </button>
        </div>
-      <div class="col"> <%=@user.leaders.count %> Following </div>
-      <div class="col"> <%=@user.received_follow_requests.pending.count %> Pending </div>
+
+      <div class="col">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#FollowingModal">
+          <%=@user.leaders.count %> Following 
+        </button>
+      </div>
+
+      <div class="col"> 
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#PendingModal">
+          <%=@user.received_follow_requests.pending.count %> Pending  
+        </button>
+      </div>
     </div>
    
     <div class="d-grid gap-2 mt-4 mb-4">
@@ -52,3 +64,79 @@
     <span class="badge rounded-pill bg-secondary"> <%=@user.likes_count%> </span>
     </li>
 </ul>
+
+<hr>
+
+
+<!-- Modal -->
+<div class="modal fade" id="FollowersModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Followers</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <% @user.followers.each do |user2| %>
+          <li class="list-group-item">
+            <ul>
+              <%=link_to user2.username , user_path(user2.username), class: "link-primary" %>
+            </ul>
+          </li>
+        <% end %>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="FollowingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Followers</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <% @user.leaders.each do |user2| %>
+          <li class="list-group-item">
+            <ul>
+              <%=link_to user2.username , user_path(user2.username), class: "link-primary" %>
+            </ul>
+          </li>
+        <% end %>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="PendingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Followers</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <% @user.pending.each do |user2| %>
+          <li class="list-group-item">
+            <ul>
+              <%=link_to user2.username , user_path(user2.username), class: "link-primary" %>
+            </ul>
+          </li>
+        <% end %>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
